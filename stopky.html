@@ -1,0 +1,49 @@
+<!-- <?php
+Pre buducnost (ak by som sa rozhodol napr. cas ukladat do DB a pod.)
+?> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Stopky</title>
+</head>
+<body>
+    <div id="displej">00:00</div>
+
+    <button onclick="start()">▶ Štart</button>
+    <button onclick="stop()">⏸ Stop</button>
+    <button onclick="reset()">🔄 Reset</button>
+
+    <script>
+        let startTime;
+        let interval;
+        let running = false;
+
+        function start(){
+            if(running) return;
+            startTime = Date.now();
+            interval = setInterval(update, 100);
+            running = true;
+        }
+
+        function update(){
+            let elapsed = Date.now() - startTime;
+            let sekundy = Math.floor(elapsed / 1000);
+            let milisekundy = Math.floor((elapsed % 1000) / 10);
+            let displej = document.getElementById("displej");
+            displej.textContent = String(sekundy).padStart(2, "0") + ":" + String(milisekundy).padStart(2, "0");
+        }
+
+        function stop(){
+            clearInterval(interval);
+            running = false;
+        }
+
+        function reset(){
+            clearInterval(interval);
+            running = false;
+            document.getElementById("displej").textContent = "00:00";
+        }
+    </script>
+</body>
+</html>
