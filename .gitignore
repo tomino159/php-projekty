@@ -1,0 +1,9 @@
+# Databázové pripojenie - obsahuje heslo!
+db.php
+
+# Systémové súbory
+.DS_Store
+Thumbs.db
+
+# VS Code nastavenia
+.vscode/
